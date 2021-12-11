@@ -1,6 +1,6 @@
 # Youtube downloader using python
 
-Use this design to download MP3, MP4 and MP3 playlist and MP4 playlist
+Use this project to download MP3, MP4 and MP3 playlist and MP4 playlist
 
 ## How to use it?
 
