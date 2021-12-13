@@ -10,10 +10,23 @@ class Youtube_Downloader_playlist:
         self.download(link)
 
     def download(self, link):
+        user = os.environ['USERNAME']
+        path_folder = f'/home/{user}/Youtube_downloader'
+
+        try:
+            os.mkdir(path_folder)
+        except FileExistsError as e:
+            pass
+
+        os.chdir(path_folder)
         p = Playlist(link)
+
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        msg.setText(f'{p.title} está em Download. Por favor aguarde...')
+        msg.exec_()
+
         for video in p.videos:
-            # muda para o diretório de destino das músicas
-            os.chdir('/home/matt/Música')
             out_file = video.streams.first().download()
             original_name, extension = os.path.splitext(out_file)
             renamed_file = original_name + '.mp3'

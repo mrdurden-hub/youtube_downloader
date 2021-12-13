@@ -12,7 +12,16 @@ class Youtube_Downloader_mp4:
     def download(self, link):
         yt = YouTube(link, on_progress_callback=on_progress, )
         stream = yt.streams.get_highest_resolution()
-        os.chdir('/home/matt/Vídeos')
+
+        user = os.environ['USERNAME']
+        path_folder = f'/home/{user}/Youtube_downloader'
+
+        try:
+            os.mkdir(path_folder)
+        except FileExistsError as e:
+            pass
+
+        os.chdir(path_folder)
         out_file = stream.download()
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)

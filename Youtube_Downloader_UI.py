@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication
 from modules.Youtube_downloader_mp3 import Youtube_Downloader_mp3
 from modules.Youtube_downloader_mp4 import Youtube_Downloader_mp4
 from modules.Youtube_downloader_playlist import Youtube_Downloader_playlist
+from modules.Youtube_downloader_playlist_mp4 import Youtube_Downloader_playlist_mp4
 
 
 class Youtube_downloader(QMainWindow, Ui_MainWindow):
@@ -43,6 +44,7 @@ class Youtube_downloader(QMainWindow, Ui_MainWindow):
 
     def download_playlist_mp4(self):
         url = self.input.text()
+        Youtube_Downloader_playlist_mp4(url)
 
 
 if __name__ == '__main__':
